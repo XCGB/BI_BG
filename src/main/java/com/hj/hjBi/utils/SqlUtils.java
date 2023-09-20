@@ -1,0 +1,26 @@
+package com.hj.hjBi.utils;
+
+import org.apache.commons.lang3.StringUtils;
+
+/**
+ * SQL 工具
+ *
+ * @author: WHJ
+ * @createTime: 2023-09-13 09:48
+ * @description:
+ */
+public class SqlUtils {
+
+    /**
+     * 校验排序字段是否合法（防止 SQL 注入）
+     *
+     * @param sortField
+     * @return
+     */
+    public static boolean validSortField(String sortField) {
+        if (StringUtils.isBlank(sortField)) {
+            return false;
+        }
+        return !StringUtils.containsAny(sortField, "=", "(", ")", " ");
+    }
+}
